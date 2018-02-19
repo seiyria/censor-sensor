@@ -1,0 +1,35 @@
+{
+  "name": "censor-sensor",
+  "version": "1.0.0",
+  "description": "a better profanity filter",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava-ts src/**/*.spec.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seiyria/censor-sensor.git"
+  },
+  "keywords": [
+    "profanity",
+    "filter",
+    "censor"
+  ],
+  "author": "Kyle Kemp <kyle@seiyria.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seiyria/censor-sensor/issues"
+  },
+  "homepage": "https://github.com/seiyria/censor-sensor#readme",
+  "devDependencies": {
+    "@types/node": "^9.4.6",
+    "ava-ts": "^0.24.2",
+    "ts-node": "^4.1.0",
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {
+    "lodash.includes": "^4.3.0",
+    "lodash.merge": "^4.6.1",
+    "lodash.some": "^4.6.0"
+  }
+}

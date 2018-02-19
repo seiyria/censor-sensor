@@ -2,8 +2,9 @@
   "name": "censor-sensor",
   "version": "1.0.0",
   "description": "a better profanity filter",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
+    "prepare": "npm run build",
     "build": "webpack --config webpack.config.js",
     "test": "ava-ts src/**/*.spec.ts"
   },

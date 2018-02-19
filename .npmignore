@@ -1,0 +1,8 @@
+src
+.npmignore
+.gitignore
+.editorconfig
+.idea
+webpack.config.js
+tsconfig.json
+locales

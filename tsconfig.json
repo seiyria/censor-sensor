@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "src",
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "moduleResolution": "node",
     "module": "commonjs",
     "outDir": "./dist",

@@ -1,5 +1,5 @@
 
-const en = require('./en.json');
+import * as en from './en.json';
 
 export const AllLocales = {
   en

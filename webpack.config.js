@@ -10,7 +10,9 @@ module.exports = {
 
   output: {
     path: require('path').resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    filename: 'index.js',
+    library: 'censor-sensor',
+    libraryTarget: 'umd'
   },
 
   // Source maps support ('inline-source-map' also works)

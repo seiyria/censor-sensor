@@ -23,6 +23,53 @@ Words are shamelessly based on [profanity-cleanser](https://github.com/LDNOOBW/p
 # Usage
 
 ```js
+import { CensorSensor } from 'censor-sensor';
+
+const censor = new CensorSensor();
+
+// check for profanity (using equality)
+censor.isProfane('bollocks'); // true
+censor.isProfane('hello');    // false
+
+// check for profanity (using string.includes)
+censor.isProfaneIsh('bollockshead') // true
+censor.isProfaneIsh('hello')        // true
+
+// get the words that are profane from a phrase
+censor.profaneIshWords('hello')     // ['hell']
+
+// clean profanity (using equality)
+censor.cleanProfanity('bollocks')   // '****' (by default)
+censor.cleanProfanityIsh('hello')   // '****o' (by default)
+
+// add a custom cleanup function
+censor.setCleanFunction((str) => Array.from(str, x => '%').join('')); // replace all bad characters with '%'
+censor.cleanProfanity('bollocks')   // '%%%%%%%%' (by default)
+
+// reset the cleanup function
+censor.resetCleanFunction()
+
+// modify the banned words list
+censor.isProfane('asdf')    // false
+censor.addWord('asdf')
+censor.isProfane('asdf')    // true
+censor.removeWord('asdf')
+censor.isProfane('asdf')    // false
+
+// modify the banned "tier"
+censor.isProfane('bollocks')    // true
+censor.disableTier(4)
+censor.isProfane('bollocks')    // false 
+censor.enableTier(4);
+censor.isProfane('bollocks')    // true
+
+// add a custom locale (dict) and use it
+censor.isProfane('uwotm8')                // false
+censor.addLocale('custom', { uwotm8: 1 }) // the highest form of insult
+censor.setLocale('custom')
+censor.isProfane('uwotm8')                // true
+censor.setLocale('en')
+censor.isProfane('uwotm8')                // false
 ```
 
 # Word Tiers

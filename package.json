@@ -32,9 +32,5 @@
     "typescript": "^2.7.2",
     "webpack": "^3.11.0"
   },
-  "dependencies": {
-    "lodash.includes": "^4.3.0",
-    "lodash.merge": "^4.6.1",
-    "lodash.some": "^4.6.0"
-  }
+  "dependencies": {}
 }

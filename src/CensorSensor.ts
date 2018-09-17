@@ -1,9 +1,4 @@
-
 import { AllLocales } from '../locales';
-
-import * as merge from 'lodash.merge';
-import * as includes from 'lodash.includes';
-import * as some from 'lodash.some';
 
 export type CensorLocale = 'en';
 
@@ -35,7 +30,7 @@ export class CensorSensor {
   private customCleanFunction: (str: string) => string;
 
   private get currentDictionary(): { [word: string]: CensorTier } {
-    return merge({}, AllLocales[this.locale], this.customDictionary);
+    return Object.assign({}, AllLocales[this.locale], this.customDictionary);
   }
 
   private get cleanFunction(): (str: string) => string {
@@ -89,7 +84,7 @@ export class CensorSensor {
   public isProfane(phrase: string): boolean {
     const dict = this.currentDictionary;
 
-    return some(this.prepareForParsing(phrase).split(' '), word => this._isProfane(word, dict));
+    return this.prepareForParsing(phrase).split(' ').some(word => this._isProfane(word, dict));
   }
 
   private _isProfaneIsh(phrase: string, dict: { [word: string]: CensorTier }): boolean {
@@ -100,7 +95,7 @@ export class CensorSensor {
 
       const tier = dict[dictWord];
 
-      if(includes(phrase, dictWord) && this.enabledTiers[tier]) isAnyMatch = true;
+      if (phrase.indexOf(dictWord) !== -1 && this.enabledTiers[tier]) isAnyMatch = true;
     });
 
     return isAnyMatch;
@@ -118,7 +113,7 @@ export class CensorSensor {
     Object.keys(dict).forEach(dictWord => {
       const tier = dict[dictWord];
 
-      if(includes(phrase, dictWord) && this.enabledTiers[tier]) foundProfanity.push(dictWord);
+      if(phrase.indexOf(dictWord) !== -1 && this.enabledTiers[tier]) foundProfanity.push(dictWord);
     });
 
     return foundProfanity;

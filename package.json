@@ -1,6 +1,6 @@
 {
   "name": "censor-sensor",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "a better profanity filter",
   "main": "./dist/index.js",
   "typings": "./dist/src/index.d.ts",

@@ -100,3 +100,13 @@ test('Profanity can be "fixed" using a loose check and a custom function', t => 
   t.is(censorSensor.cleanProfanityIsh('What a fucking shithead.'), 'What a %%%%%%% %%%%head.');
 });
 
+test('Existing profanity can be added to the blacklist and ignored', t => {
+  const censorSensor = t.context.censorSensor;
+
+  t.is(censorSensor.cleanProfanity('hell'), '****');
+  t.is(censorSensor.cleanProfanityIsh('hell'), '****');
+  censorSensor.removeWord('hell');
+  t.is(censorSensor.cleanProfanity('hell'), 'hell');
+  t.is(censorSensor.cleanProfanityIsh('hell'), 'hell');
+});
+

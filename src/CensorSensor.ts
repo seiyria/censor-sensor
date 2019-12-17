@@ -73,6 +73,8 @@ export class CensorSensor {
 
   // profanity checking functions
   private _isProfane(word: string, dict: { [word: string]: CensorTier }): boolean {
+    if(this.blackList[word]) return false;
+
     const wordTier = dict[word];
 
     if(!wordTier) return false;
@@ -92,6 +94,7 @@ export class CensorSensor {
 
     Object.keys(dict).forEach(dictWord => {
       if(isAnyMatch) return;
+      if(this.blackList[dictWord]) return;
 
       const tier = dict[dictWord];
 
@@ -111,6 +114,8 @@ export class CensorSensor {
     const foundProfanity = [];
 
     Object.keys(dict).forEach(dictWord => {
+      if(this.blackList[dictWord]) return;
+      
       const tier = dict[dictWord];
 
       if(phrase.indexOf(dictWord) !== -1 && this.enabledTiers[tier]) foundProfanity.push(dictWord);

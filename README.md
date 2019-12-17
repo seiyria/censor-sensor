@@ -70,6 +70,11 @@ censor.setLocale('custom')
 censor.isProfane('uwotm8')                // true
 censor.setLocale('en')
 censor.isProfane('uwotm8')                // false
+
+// remove an existing word from an existing tier
+censor.isProfane('hell')  // true
+censor.removeWord('hell')
+censor.isProfane('hell')  // false
 ```
 
 # Word Tiers
